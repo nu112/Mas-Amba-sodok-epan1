@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mas Amba Sodok Epan Simulator</title>
+<style>
+body{
+    text-align:center;
+    font-family:Arial;
+    background:#87ceeb;
+    margin:0;
+}
+h1{
+    background:#333;
+    color:white;
+    padding:10px;
+    margin:0;
+}
+#game{
+    width:350px;
+    height:400px;
+    margin:20px auto;
+    background:#90ee90;
+    border:3px solid black;
+    position:relative;
+    overflow:hidden;
+}
+#amba,#epan{
+    position:absolute;
+    font-size:40px;
+}
+#amba{
+    bottom:20px;
+    left:150px;
+}
+#epan{
+    top:30px;
+    left:150px;
+}
+button{
+    padding:10px 20px;
+    font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<h1>🤣 Mas Amba Sodok Epan Simulator</h1>
+
+<p>Skor: <span id="score">0</span></p>
+
+<div id="game">
+    <div id="epan">🏃</div>
+    <div id="amba">🧑</div>
+</div>
+
+<button onclick="sodok()">SODOK!</button>
+
+<script>
+let score=0;
+let epan=document.getElementById("epan");
+
+function moveEpan(){
+    epan.style.left=Math.random()*300+"px";
+    epan.style.top=Math.random()*250+"px";
+}
+
+setInterval(moveEpan,1000);
+
+function sodok(){
+    let x=parseInt(epan.style.left)||150;
+    let y=parseInt(epan.style.top)||30;
+
+    if(y<120){
+        score++;
+        document.getElementById("score").innerText=score;
+        alert("🤣 KENA SODOK!");
+        moveEpan();
+    }else{
+        alert("😆 Meleset!");
+    }
+}
+</script>
+
+</body>
+</html>
